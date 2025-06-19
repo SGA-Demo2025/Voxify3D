@@ -78,9 +78,19 @@
             <div class="is-size-5 publication-authors">
               <!-- Paper authors -->
               <span class="author-block">
-                <a href="FIRST AUTHOR PERSONAL LINK" target="_blank">Anonymous</a></span>
+                <a href="FIRST AUTHOR PERSONAL LINK" target="_blank">Yi-Chuan Huang</a><sup>*</sup>,</span>
+                <span class="author-block">
+                  <a href="SECOND AUTHOR PERSONAL LINK" target="_blank">Jie-Wen Chen</a>,</span>
+                  <span class="author-block">
+                    <a href="THIRD AUTHOR PERSONAL LINK" target="_blank">Chris Chein</a>,</span>
+                    <span class="author-block">
+                      <a href="FORTH AUTHOR PERSONAL LINK" target="_blank">Yu-Lun Liu</a>
+                  </span>
                   </div>
 
+                  <div class="is-size-6 publication-authors">
+                    <span class="author-block">National Yang Ming Chiao Tung University</span> 
+                  </div>
 
                   <div class="column has-text-centered">
                     <div class="publication-links">
@@ -358,24 +368,24 @@
       <div class="column">
         <h2 class="title is-4 gradient-text" style="font-weight: 800;">Pipeline</h2>
 
-
-
-        <!-- Pipeline Image -->
-        <figure class="image">
+        <figure class="image" style="width: 100%; margin: 0 auto 1rem;">
           <img src="static/images/pipeline.png" alt="Voxify3D Pipeline Overview" style="width: 100%; height: auto;">
-        </figure>
-        <p style="font-size: 0.85rem; margin-top: 0.5rem;">
-        Our two-stage voxel art generation pipeline.
+          </figure>
+        
+        <div class="content has-text-justified">
+          <p style="font-size: 0.9rem;">
+            Our two-stage voxel art generation pipeline.
             (a) Coarse voxel grid training: Given a 3D mesh, we render multi-view images and optimize a voxel-based radiance field (DVGO [Sun et al. 2022]) using MSE loss to learn coarse geometry and appearance.
             (b) Orthographic pixel art fine-tuning: We refine the voxel grid using six orthographic pixel art views, which also serve to extract a discrete color palette (e.g., via k-means). Optimization includes appearance, depth, and alpha losses.
             (c) CLIP-guided optimization: A CLIP loss computed over rendered patches and mesh images encourages semantic alignment while being memory-efficient.
             (d) Differentiable discrete color selection via Gumbel-Softmax: Each voxel stores palette logits. Gumbel-Softmax enables differentiable sampling for end-to-end color optimization, yielding coherent, stylized voxel art.
-        </p>
+          </p>
+        </div>
       </div>
     </div>
   </div>
 </section>
-<!-- End Pipeline Section -->
+
 
 
 
@@ -420,10 +430,10 @@
     ],
     size: [
       { src: "static/videos/gallery/tiger/tiger_ori.mp4", label: "Input" },
-      { src: "static/videos/gallery/tiger/tiger_2.mp4", label: "2 color" },
-      { src: "static/videos/gallery/tiger/tiger_3.mp4", label: "3 color" },
-      { src: "static/videos/gallery/tiger/tiger_4.mp4", label: "4 color" },
-      { src: "static/videos/gallery/tiger/tiger_8.mp4", label: "8 color" },
+      { src: "static/videos/gallery/tiger/tiger_2.mp4", label: "2 colors" },
+      { src: "static/videos/gallery/tiger/tiger_3.mp4", label: "3 colors" },
+      { src: "static/videos/gallery/tiger/tiger_4.mp4", label: "4 colors" },
+      { src: "static/videos/gallery/tiger/tiger_8.mp4", label: "8 colors" },
     ],
 
   };
@@ -474,10 +484,9 @@
     <!-- Viewer 2 -->
     <div style="width: 23%; aspect-ratio: 1/1; text-align: center;">
       <model-viewer 
-      src="static/models/parrot/parrot_ours.glb"
+      src="static/models/parrot/parrot_ours2.glb"
       alt="Baseline"
       auto-rotate camera-controls 
-      camera-orbit="180deg 0deg auto" 
       style="width: 100%; height: 100%; object-fit: contain; border-radius: 10px;">
     </model-viewer>
       <p class="is-size-6">Ours</p>
@@ -493,18 +502,16 @@
       </model-viewer>
       <p class="is-size-6">Input</p>
     </div>
-
-    <!-- Viewer 2 -->
-    <div style="width: 23%; aspect-ratio: 1/1; text-align: center;">
-      <model-viewer 
-      src="static/models/Pikachu/Pikachu_ours.glb"
-      alt="Baseline"
-      auto-rotate camera-controls 
-      camera-orbit="180deg 0deg auto" 
-      style="width: 100%; height: 100%; object-fit: contain; border-radius: 10px;">
-    </model-viewer>
-      <p class="is-size-6">Ours</p>
-    </div>
+      <!-- Viewer 2 -->
+      <div style="width: 23%; aspect-ratio: 1/1; text-align: center;">
+        <model-viewer 
+        src="static/models/Pikachu/Pikachu_ours2.glb"
+        alt="Baseline"
+        auto-rotate camera-controls 
+        style="width: 100%; height: 100%; object-fit: contain; border-radius: 10px;">
+      </model-viewer>
+        <p class="is-size-6">Ours</p>
+      </div>
 
 
         <!-- Viewer 1 -->
@@ -521,10 +528,9 @@
         <!-- Viewer 2 -->
         <div style="width: 23%; aspect-ratio: 1/1; text-align: center;">
           <model-viewer 
-          src="static/models/snow_mountain/snow_mountain_ours.glb"
+          src="static/models/snow_mountain/snow_mountain_ours2.glb"
           alt="Baseline"
           auto-rotate camera-controls 
-          camera-orbit="180deg 0deg auto" 
           style="width: 100%; height: 100%; object-fit: contain; border-radius: 10px;">
         </model-viewer>
           <p class="is-size-6">Ours</p>
@@ -544,10 +550,9 @@
             <!-- Viewer 2 -->
             <div style="width: 23%; aspect-ratio: 1/1; text-align: center;">
               <model-viewer 
-              src="static/models/bunny/bunny_ours.glb"
+              src="static/models/bunny/bunny_ours2.glb"
               alt="Baseline"
               auto-rotate camera-controls 
-              camera-orbit="180deg 0deg auto" 
               style="width: 100%; height: 100%; object-fit: contain; border-radius: 10px;">
             </model-viewer>
               <p class="is-size-6">Ours</p>
@@ -602,40 +607,11 @@
 
 
 
-<!--BibTex citation -->
-<section class="section" id="BibTeX">
-  <div class="container is-max-desktop content">
-    <h2 class="title">BibTeX</h2>
-    <pre><code>@article{wang2022rodin,
-  title={Rodin: A Generative Model for Sculpting 3D Digital Avatars Using Diffusion},
-  author={Wang, Tengfei and Zhang, Bo and Zhang, Ting and Gu, Shuyang and Bao, Jianmin and Baltrusaitis, Tadas and Shen, Jingjing and Chen, Dong and Wen, Fang and Chen, Qifeng and Guo, Baining},
-  journal={arXiv preprint arXiv:2212.06135},
-  year={2022}
-}
-
-@article{wu2024unique3d,
-  title={Unique3D: High-Quality and Efficient 3D Mesh Generation from a Single Image},
-  author={Wu, Kailu and Liu, Fangfu and Cai, Zhihan and Yan, Runjie and Wang, Hanyang and Hu, Yating and Duan, Yueqi and Ma, Kaisheng},
-  journal={arXiv preprint arXiv:2405.20343},
-  year={2024}
-}</code></pre>
-  </div>
-</section>
-<!--End BibTex citation -->
-
-
-
   <footer class="footer">
   <div class="container">
     <div class="columns is-centered">
       <div class="column is-8">
         <div class="content">
-
-          <p>
-            This page was built using the <a href="https://github.com/eliahuhorwitz/Academic-project-page-template" target="_blank">Academic Project Page Template</a> which was adopted from the <a href="https://nerfies.github.io" target="_blank">Nerfies</a> project page.
-            You are free to borrow the source code of this website, we just ask that you link back to this page in the footer. <br> This website is licensed under a <a rel="license"  href="http://creativecommons.org/licenses/by-sa/4.0/" target="_blank">Creative
-            Commons Attribution-ShareAlike 4.0 International License</a>.
-          </p>
 
         </div>
       </div>
