@@ -78,18 +78,7 @@
             <div class="is-size-5 publication-authors">
               <!-- Paper authors -->
               <span class="author-block">
-                <a href="FIRST AUTHOR PERSONAL LINK" target="_blank">Yi-Chuan Huang</a><sup>*</sup>,</span>
-                <span class="author-block">
-                  <a href="SECOND AUTHOR PERSONAL LINK" target="_blank">Jie-Wen Chen</a>,</span>
-                  <span class="author-block">
-                    <a href="THIRD AUTHOR PERSONAL LINK" target="_blank">Chris Chein</a>,</span>
-                    <span class="author-block">
-                      <a href="FORTH AUTHOR PERSONAL LINK" target="_blank">Yu-Lun Liu</a>
-                  </span>
-                  </div>
-
-                  <div class="is-size-6 publication-authors">
-                    <span class="author-block">National Yang Ming Chiao Tung University</span> 
+                <a href="FIRST AUTHOR PERSONAL LINK" target="_blank">Anonymous</a></span>
                   </div>
 
                   <div class="column has-text-centered">
@@ -395,18 +384,38 @@
         <h2 class="title is-4 gradient-text" style="font-weight: 800;">Result Gallery</h2>
       </div>
     </div>
-    <!-- 下面不變 -->
 
-    <!-- Navigation Buttons -->
-    <div class="has-text-centered" style="margin-bottom: 1rem;">
-      <button class="button is-small is-rounded" onclick="showCategory('palette')">Color Palette</button>
-      <button class="button is-small is-rounded" onclick="showCategory('size')">Palette Size</button>
-      <button class="button is-small is-rounded" onclick="showCategory('voxel')">Voxel Size</button>
+    <!-- Palette -->
+    <div class="columns is-centered">
+      <div class="column is-full has-text-centered">
+        <h3 class="title is-5" style="margin-top: 2rem;">Color Palette</h3>
+      </div>
+    </div>
+    <div id="palette-container" class="columns is-multiline is-centered gallery-page" style="display: flex; flex-wrap: wrap;">
     </div>
 
-    <!-- Gallery Container -->
-    <div id="gallery-container" class="columns is-multiline is-centered gallery-page" style="display: flex; flex-wrap: wrap;">
-      <!-- Videos will be injected here -->
+    <!-- 分隔線 -->
+    <hr style="border: none; border-top: 1px solid #ccc; margin: 3rem 0;">
+
+    <!-- Palette Size -->
+    <div class="columns is-centered">
+      <div class="column is-full has-text-centered">
+        <h3 class="title is-5" style="margin-top: 0rem;">Palette Size</h3>
+      </div>
+    </div>
+    <div id="size-container" class="columns is-multiline is-centered gallery-page" style="display: flex; flex-wrap: wrap;">
+    </div>
+
+    <!-- 分隔線 -->
+    <hr style="border: none; border-top: 1px solid #ccc; margin: 3rem 0;">
+
+    <!-- Voxel Size -->
+    <div class="columns is-centered">
+      <div class="column is-full has-text-centered">
+        <h3 class="title is-5" style="margin-top: 0rem;">Voxel Size</h3>
+      </div>
+    </div>
+    <div id="voxel-container" class="columns is-multiline is-centered gallery-page" style="display: flex; flex-wrap: wrap;">
     </div>
   </div>
 </section>
@@ -414,11 +423,11 @@
 <script>
   const videoData = {
     palette: [
-    { src: "static/videos/gallery/Dog/Dog_ori.mp4", label: "Input" },
-    { src: "static/videos/gallery/Dog/Dog_kmeans.mp4", label: "K-means" },
-    { src: "static/videos/gallery/Dog/Dog_median.mp4", label: "Median-cut" },
-    { src: "static/videos/gallery/Dog/Dog_maxmin.mp4", label: "Max-min" },
-    { src: "static/videos/gallery/Dog/Dog_sa.mp4", label: "Simulated-Annealing" },
+      { src: "static/videos/gallery/Dog/Dog_ori.mp4", label: "Input" },
+      { src: "static/videos/gallery/Dog/Dog_kmeans.mp4", label: "K-means" },
+      { src: "static/videos/gallery/Dog/Dog_median.mp4", label: "Median-cut" },
+      { src: "static/videos/gallery/Dog/Dog_maxmin.mp4", label: "Max-min" },
+      { src: "static/videos/gallery/Dog/Dog_sa.mp4", label: "Simulated-Annealing" },
     ],
     voxel: [
       { src: "static/videos/gallery/cat/cat_ori.mp4", label: "Input" },
@@ -426,6 +435,16 @@
       { src: "static/videos/gallery/cat/cat_30.mp4", label: "30x" },
       { src: "static/videos/gallery/cat/cat_40.mp4", label: "40x" },
       { src: "static/videos/gallery/cat/cat_50.mp4", label: "50x" },
+      { src: "static/videos/gallery/watermelon_dog/watermelon_dog_ori.mp4", label: "Input" },
+      { src: "static/videos/gallery/watermelon_dog/watermelon_dog_20.mp4", label: "20x" },
+      { src: "static/videos/gallery/watermelon_dog/watermelon_dog_25.mp4", label: "25x" },
+      { src: "static/videos/gallery/watermelon_dog/watermelon_dog_40.mp4", label: "40x" },
+      { src: "static/videos/gallery/watermelon_dog/watermelon_dog_50.mp4", label: "50x" },
+      { src: "static/videos/gallery/mushroom/mushroom_ori.mp4", label: "Input" },
+      { src: "static/videos/gallery/mushroom/mushroom_ours_20.mp4", label: "20x" },
+      { src: "static/videos/gallery/mushroom/mushroom_ours_25.mp4", label: "25x" },
+      { src: "static/videos/gallery/mushroom/mushroom_ours_40.mp4", label: "40x" },
+      { src: "static/videos/gallery/mushroom/mushroom_ours_50.mp4", label: "50x" },
     ],
     size: [
       { src: "static/videos/gallery/tiger/tiger_ori.mp4", label: "Input" },
@@ -433,33 +452,45 @@
       { src: "static/videos/gallery/tiger/tiger_3.mp4", label: "3 colors" },
       { src: "static/videos/gallery/tiger/tiger_4.mp4", label: "4 colors" },
       { src: "static/videos/gallery/tiger/tiger_8.mp4", label: "8 colors" },
+      { src: "static/videos/gallery/Panda/Panda_ori.mp4", label: "Input" },
+      { src: "static/videos/gallery/Panda/Panda_ours_2.mp4", label: "2 colors" },
+      { src: "static/videos/gallery/Panda/Panda_ours_3.mp4", label: "3 colors" },
+      { src: "static/videos/gallery/Panda/Panda_ours_4.mp4", label: "4 colors" },
+      { src: "static/videos/gallery/Panda/Panda_ours_8.mp4", label: "8 colors" },
+      { src: "static/videos/gallery/owl/owl_ori.mp4", label: "Input" },
+      { src: "static/videos/gallery/owl/owl_ours_2.mp4", label: "2 colors" },
+      { src: "static/videos/gallery/owl/owl_ours_3.mp4", label: "3 colors" },
+      { src: "static/videos/gallery/owl/owl_ours_4.mp4", label: "4 colors" },
+      { src: "static/videos/gallery/owl/owl_ours_8.mp4", label: "8 colors" },
+      
     ],
-
   };
 
-  function showCategory(category) {
-    const container = document.getElementById('gallery-container');
-    container.innerHTML = '';
-    videoData[category].forEach((item) => {
-      const column = document.createElement('div');
-      column.className = "column is-one-fifth has-text-centered";
-      column.innerHTML = `
+  // 動態插入影片
+  function renderVideos(containerId, videoList) {
+    const container = document.getElementById(containerId);
+    videoList.forEach(item => {
+      const div = document.createElement('div');
+      div.className = 'column is-one-fifth has-text-centered';
+      div.innerHTML = `
         <video autoplay muted loop playsinline style="width: 100%; aspect-ratio: 1/1; object-fit: cover;">
           <source src="${item.src}" type="video/mp4">
         </video>
         <p class="is-size-6" style="margin-top: 0.5rem;">${item.label}</p>
       `;
-      container.appendChild(column);
+      container.appendChild(div);
     });
   }
 
-  // Initialize with voxel category
-  showCategory('palette');
+  // 呼叫
+  renderVideos('palette-container', videoData.palette);
+  renderVideos('size-container', videoData.size);
+  renderVideos('voxel-container', videoData.voxel);
 </script>
 
 
 <!-- Interactable Meshes Section -->
-<section class="section hero is-white" style="width: 100vw; padding-left: 15vw; padding-right: 15vw;">
+<section class="section hero is-white" style="width: 100vw; padding-left: 18vw; padding-right: 18vw;">
   <div class="container is-max-desktop" style="padding: 0 0rem;">
       <div class="column">
       <h2 class="title is-4 gradient-text" style="font-weight: 800;">Interactable Meshes</h2>
